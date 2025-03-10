@@ -33,7 +33,7 @@ function generateOptions(correctLetter) {
 
 //ROUTES
 
-router.get("/learn", async (req, res) => {
+router.get("/learn", ensureAuthenticated, async (req, res) => {
   try {
     if (!req.session.rounds) {
       req.session.rounds = 1; // Initialize round count if not set
@@ -82,7 +82,7 @@ router.get("/learn", async (req, res) => {
   }
 });
 
-router.post("/check", (req, res) => {
+router.post("/check", ensureAuthenticated, (req, res) => {
   const userChoice = req.body.choice;
   const correctLetter = req.session.correctLetter;
 
@@ -112,7 +112,7 @@ router.post("/next-round", (req, res) => {
   res.json({ round: req.session.rounds });
 });
 
-router.get("/restart", (req, res) => {
+router.get("/restart", ensureAuthenticated, (req, res) => {
   req.session.rounds = 1;
   req.session.correctCount = 0;
   req.session.history = []; // Reset history
@@ -120,7 +120,7 @@ router.get("/restart", (req, res) => {
   req.session.correctLetter = null;
   res.redirect("/learn");
 });
-router.get("/game-over", async (req, res) => {
+router.get("/game-over", ensureAuthenticated, async (req, res) => {
   const user = req.session.user; // Get user from session
   const correctCount = req.session.correctCount || 0;
 
@@ -151,7 +151,7 @@ router.get("/game-over", async (req, res) => {
       return res.status(500).send("Internal Server Error");
     }
   }
-  res.render("game-over", {
+  res.render("game-over", ensureAuthenticated, {
     message: "You've completed 10 rounds!",
     correctCount: correctCount,
     history: req.session.history || [],
