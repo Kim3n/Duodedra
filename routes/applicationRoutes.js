@@ -151,7 +151,7 @@ router.get("/game-over", ensureAuthenticated, async (req, res) => {
       return res.status(500).send("Internal Server Error");
     }
   }
-  res.render("game-over", ensureAuthenticated, {
+  res.render("game-over", {
     message: "You've completed 10 rounds!",
     correctCount: correctCount,
     history: req.session.history || [],
