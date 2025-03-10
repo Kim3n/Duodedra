@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoDedra - Learn</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <video class="background-video" autoplay loop muted  src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"></video>
+  <body>
+      <%- include('component/overlay', { role: role }) %>
+      <main class="border-with-corner">
+
+      
+     <form id="quiz-form">
+        <h1 id="round-counter">Round: <%= rounds %></h1>
+        <img src="<%= image %>" alt="Letter Image" />
+
+        <div class="options" id="options">
+
+          <% options.forEach((option, index) => { %>
+          <button
+            type="button"
+            class="option-btn"
+            data-index="<%= index %>"
+            data-choice="<%= option %>"
+          >
+            <%= option %>
+            <img class="arrow arrow-right" src="/imgs/SelectorRight.png"></img>
+            <img class="arrow arrow-left" src="/imgs/SelectorLeft.png"></img>
+          </button>
+          <% }) %>
+        </div>
+        
+        <div id="result-message-container" style="display: none">
+          
+          <p id="result-message"></p>
+          <button id="next-question" class="btn btn_yes">Next Question</button>
+        </div>
+
+
+      </form>
+    </main>
+  </body>
+
+  <script src="learn.js"></script>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoDedra - admin</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <video
+      class="background-video"
+      autoplay
+      loop
+      muted
+      src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"
+    ></video>
+    <%- include('component/overlay', { role: role }) %>
+    <main class="border-with-corner">
+      <div class="dashboard_container">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, Admin user: <%= username %>!</p>
+        <p><a href="/dashboard">Back to Dashboard</a></p>
+      </div>
+    </main>
+  </body>
+</html>

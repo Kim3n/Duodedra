@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoDedra - Home</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="stylesheet" href="/overlay.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <script>
+    window.showOverlay = "<%= showOverlay || '' %>";
+  </script>
+  
+  <video class="background-video" autoplay loop muted  src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"></video>
+  <div class="skyrim">
+    
+
+
+    <div class="overlay">
+        <div class="borders"></div>
+        <div class="catcher" data-overlay-close="continue"></div>
+        <div class="overlay_container">
+        <p class="overlay_text"></p>
+        <p class="message"><%= message %></p>
+        <div class="overlay_content"></div>
+        <div class="overlay_controls">
+          <a href="/" class="btn btn_yes">Yes</a>
+          <a href="#" class="btn btn_no" data-overlay-close="continue">No</a>
+        </div>
+    </div>
+    </div>
+    <ul class="menu">
+      <% if (role === "admin" || role ==="user") { %>
+        <li><a href="#" data-overlay-activate="Learn">Start learning</a></li>
+        <li><a href="#" data-overlay-activate="Usersettings">User Settings</a></li>
+      <% } else { %>
+        <li><a href="#" data-overlay-activate="Login">Log in</a></li>
+        <li><a href="#" data-overlay-activate="Register">Register</a></li>
+      <% }  %>
+      <% if (role === "admin") { %>
+        <li><a href="#" data-overlay-activate="Admin">Go to Admin Panel</a></li>
+      <% } %>
+
+      <li><a href="#" data-overlay-activate="Leaderboard">Leaderboard</a></li>
+      
+      <li><a href="#" data-overlay-activate="Credits">Credits</a></li>
+      <% if (role === "admin" || role ==="user") { %>
+        <li><a href="#" data-overlay-activate="Logout">Logout</a></li>
+      <% } %>
+    </ul>
+  </div>
+
+  </div>
+  <script src="index.js"></script>
+</html>

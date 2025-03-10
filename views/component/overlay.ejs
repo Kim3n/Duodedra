@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/overlay.css" />
+<script src="/overlay.js" defer></script>
+<html lang="en">
+  <button id="openOverlayBtn" class="svg-btn">
+    <svg
+      id="openOverlay"
+      class="overlay-button"
+      width="32px"
+      height="32px"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M4 18L20 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M4 12L20 12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M4 6L20 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </g>
+    </svg>
+  </button>
+  <div class="overlay_general" id="overlay">
+    <div class="borders"></div>
+    <div class="catcher" data-overlay-close="continue"></div>
+    <ul class="overlay_container_general">
+      <li><a href="/">Home</a></li>
+      <% if (role === "admin" || role ==="user") { %>
+
+      <li>
+        <a href="/learn">Start learning</a>
+      </li>
+      <li>
+        <a href="/dashboard">User Settings</a>
+      </li>
+      <% } else { %>
+      <li>
+        <a href="/login">Login</a>
+      </li>
+      <li>
+        <a href="/register">Register</a>
+      </li>
+      <% } %> <% if (role === "admin") { %>
+      <li><a href="/admin">Go to Admin Panel</a></li>
+      <% } %>
+      <li>
+        <a href="/leaderboard">Leaderboard</a>
+      </li>
+      <li><a href="https://github.com/Kim3n">Credits</a></li>
+      <% if (role === "admin" || role ==="user") { %>
+      <li><a href="/logout">Logout</a></li>
+      <% } %>
+    </ul>
+  </div>
+</html>

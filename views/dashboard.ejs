@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DuoDedra - dashboard</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <video
+      class="background-video"
+      autoplay
+      loop
+      muted
+      src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"
+    ></video>
+    <%- include('component/overlay', { role: role }) %>
+    <main class="border-with-corner">
+      <div class="dashboard_container">
+        <div>
+          <h1>Welcome, <%= username %>!</h1>
+          <h3>Your role: <%= role %></h3>
+          <h3>Your XP: <%= xp %></h3>
+          <% if (role === "admin") { %>
+          <a href="/admin">Go to Admin Panel</a>
+          <% } %>
+          <h3>Change Password:</h3>
+        </div>
+        <form action="/update-password" method="POST">
+          <input
+            type="password"
+            name="oldPassword"
+            placeholder="Old Password"
+            required
+          />
+          <input
+            type="password"
+            name="newPassword"
+            placeholder="New Password"
+            required
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Repeat New Password"
+            required
+          />
+          <% if (message) { %>
+          <p class="message"><%= message %></p>
+          <% } %>
+          <button type="submit" class="btn btn_yes">Submit</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

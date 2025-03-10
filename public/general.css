@@ -1,0 +1,324 @@
+:root {
+  --text-gray: #777;
+  --border-gray: #444;
+}
+
+.benchnine-light {
+  font-family: "BenchNine", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.benchnine-regular {
+  font-family: "BenchNine", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.benchnine-bold {
+  font-family: "BenchNine", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oblivion";
+  src: url("fonts/Oblivion.ttf") format("truetype");
+}
+
+.oblivion-font {
+  font-family: "Oblivion", sans-serif;
+}
+
+.overlay-button {
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.overlay-button:hover {
+  color: #777;
+}
+
+html,
+body {
+  z-index: -999;
+  background: #060606;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  font-family: "BenchNine", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -20;
+}
+
+/*INDEX*/
+
+.skyrim {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+ul.menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+  margin-right: 30px;
+  text-align: right;
+  height: 100%;
+  width: 30%;
+  align-items: flex-end;
+
+  li {
+    text-transform: uppercase;
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+
+  li:first-child {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+
+  li:last-child {
+    font-size: 18px;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text-gray);
+  }
+  a.active {
+    color: #fff;
+  }
+  a:hover {
+    color: #fff;
+  }
+}
+
+#quiz-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #000000;
+}
+
+#round-counter {
+  color: white;
+}
+
+.options {
+  display: flex;
+  gap: 15px;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 60px;
+}
+
+.option-btn {
+  position: relative;
+  font-size: 36px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}
+
+.arrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.arrow-left {
+  left: -1px;
+}
+
+.arrow-right {
+  right: -3px;
+}
+
+.option-btn:hover .arrow-left,
+.option-btn:hover .arrow-right {
+  opacity: 1;
+}
+
+.option-btn:hover .arrow-left {
+  transform: translateX(-5px);
+}
+
+.option-btn:hover .arrow-right {
+  transform: translateX(5px);
+}
+
+button {
+  all: unset;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn_yes::before {
+  content: "Enter";
+  color: #eee;
+  font-weight: normal;
+  border-top: 2px solid var(--text-gray);
+  border-right: 1px solid var(--text-gray);
+  border-bottom: 2px solid var(--text-gray);
+  border-left: 1px solid var(--text-gray);
+  border-radius: 5px;
+  margin-right: 3px;
+  padding: 0 1px;
+}
+
+#result-message {
+  padding: 0;
+}
+
+#result-message-container {
+  height: 60px;
+  width: 310px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: var(--text-gray);
+}
+
+tr:hover {
+  background-color: var(--border-gray);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 5px;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  gap: 20px;
+}
+.result-container h1,
+.result-container h2,
+.result-container h3 {
+  margin: 0;
+}
+/* Ensure the body and html take up the full height of the viewport */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1919;
+}
+
+.border-with-corner {
+  border: 30px solid transparent;
+  border-image: url("/imgs/infocard.png") 250;
+}
+
+.dashboard_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #000000;
+  text-align: center;
+  gap: 1rem;
+}
+
+.dashboard_container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  background: transparent;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid var(--text-gray);
+  color: white;
+}
+
+input::placeholder {
+  color: var(--text-gray);
+  opacity: 0.5;
+}
+.message {
+  color: var(--text-gray);
+}

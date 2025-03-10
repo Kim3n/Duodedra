@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoDedra - Results</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include('component/overlay', { role: role }) %>
+    <video
+      class="background-video"
+      autoplay
+      loop
+      muted
+      src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"
+    ></video>
+    <main class="border-with-corner">
+      <div class="dashboard_container">
+        <div>
+          <h1><%= message %></h1>
+          <h2>Your earned: <%= correctCount %>XP!</h2>
+          <h2>Your total XP is now: <%= xp %>XP!</h2>
+          <h3>Game History</h3>
+        </div>
+        <table border="1" class="result-table">
+          <tr>
+            <th>Round</th>
+            <th>Oblivion Letter</th>
+            <th>Correct Letter</th>
+            <th>Your Choice</th>
+            <th>Result</th>
+          </tr>
+          <% history.forEach(entry => { %>
+          <tr>
+            <td><%= entry.round %></td>
+            <td class="oblivion-font"><%= entry.correctLetter %></td>
+            <td><%= entry.correctLetter %></td>
+            <td><%= entry.userChoice %></td>
+            <td><%= entry.result %></td>
+          </tr>
+          <% }); %>
+        </table>
+
+        <button onclick="window.location.href='/restart'" class="btn btn_yes">
+          Restart Game
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoDedra - Leaderboard</title>
+    <link rel="stylesheet" href="/general.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <%- include('component/overlay', { role: role }) %>
+    <video
+      class="background-video"
+      autoplay
+      loop
+      muted
+      src="https://videos.pexels.com/video-files/9694806/9694806-hd_1920_1080_25fps.mp4"
+    ></video>
+    <main>
+      <div class="border-with-corner">
+        <div class="dashboard_container">
+          <h2>All-Time Leaderboard</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Total XP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% allTimeLeaderboard.forEach((user, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user.username %></td>
+                <td><%= user.xp %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+          <h2>Last Week's Leaderboard</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>XP (Last 7 Days)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% lastWeekLeaderboard.forEach((user, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user.username %></td>
+                <td><%= user.total_xp %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
