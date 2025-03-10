@@ -105,6 +105,20 @@ router.post("/register", async (req, res) => {
       });
     }
 
+    // Password regex for validation
+    const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+    // Check if the password matches the regex
+    if (!passwordRegex.test(password)) {
+      const userRole = req.session.user ? req.session.user.role : null;
+      return res.render("index", {
+        message:
+          "Password does not meet the required criteria. It must be longer than 8 characters and contain at least one number and one uppercase letter.",
+        showOverlay: "Register",
+        role: userRole,
+      });
+    }
+
     // Hash the password before storing it
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -159,6 +173,20 @@ router.post("/update-password", ensureAuthenticated, async (req, res) => {
     if (newPassword !== confirmPassword) {
       return res.render("dashboard", {
         message: "New passwords do not match.",
+        username: user.username,
+        role: user.role,
+        xp: user.xp,
+      });
+    }
+
+    // Password regex for validation
+    const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+    // Check if the new password matches the regex
+    if (!passwordRegex.test(newPassword)) {
+      return res.render("dashboard", {
+        message:
+          "New password does not meet the required criteria. It must be longer than 8 characters and contain at least one number and one uppercase letter.",
         username: user.username,
         role: user.role,
         xp: user.xp,
