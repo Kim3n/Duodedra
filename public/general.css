@@ -321,4 +321,5 @@ input::placeholder {
 }
 .message {
   color: var(--text-gray);
+  width: 90%;
 }
