@@ -16,6 +16,7 @@ A Duolingo-style web app designed to help you learn and practice the Daedric alp
 - Backend: Node.js with Express.js
 - Frontend: EJS templating engine
 - Database: PostgreSQL
+- Hosted with northflank
 
 ## Screenshots:
 
